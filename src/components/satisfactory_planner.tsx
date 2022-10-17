@@ -1,5 +1,6 @@
 import * as React from 'react'
 import MarkdownEditor from './markdown_editor'
+import MarkdownRenderer from './markdown_renderer'
 
 function SatisfactoryPlanner(): React.ReactElement {
     const [markdown, setMarkdown] = React.useState<string>('');
@@ -12,9 +13,7 @@ function SatisfactoryPlanner(): React.ReactElement {
         <div>
             <h1>Satisfactory Planner</h1>
             <MarkdownEditor markdown={markdown} onChange={onMarkdownChange} />
-            <pre>
-                {markdown}
-            </pre>
+            <MarkdownRenderer markdown={markdown} />
         </div>
     )
 }
