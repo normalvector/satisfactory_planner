@@ -1,5 +1,7 @@
 #!/usr/bin/node
 
+const sassPlugin = require('esbuild-sass-plugin')
+
 // Process command line args
 const yargs = require('yargs')
 const args = yargs
@@ -33,6 +35,9 @@ const options = {
     sourcemap: 'external',
     watch: watchOptions,
     logLevel: 'debug',
+    plugins: [
+        sassPlugin.sassPlugin({ cache: true, type: 'style' }),
+    ]
 }
 
 // Perform the build

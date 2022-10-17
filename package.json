@@ -20,17 +20,20 @@
   },
   "homepage": "https://github.com/normalvector/satisfactory_planner#readme",
   "dependencies": {
+    "@blueprintjs/core": "^4.11.3",
     "@monaco-editor/react": "^4.4.6",
     "@types/marked": "^4.0.7",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "marked": "^4.1.1",
+    "normalize.css": "^8.0.1",
     "porter-stemmer": "^0.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "esbuild": "^0.15.11",
+    "esbuild-sass-plugin": "^2.3.3",
     "sync-directory": "^5.1.9",
     "typescript": "^4.8.4",
     "yargs": "^17.6.0"
