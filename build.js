@@ -9,6 +9,7 @@ const args = yargs
     })
     .help()
     .alias('help', 'h')
+    .argv
 const watch = args.watch
 console.log(
     "Building",
