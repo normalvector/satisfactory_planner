@@ -1,6 +1,23 @@
+// Some basic styles for our own content
+.planner_data {
+    color: darkcyan;
+}
+
+ul.planner_data {
+    list-style-type: none;
+}
+
+.planner_error {
+    color: white;
+    background-color: red;
+}
+
 // These are the BlueprintJS stuff
 @import "../../node_modules/normalize.css/normalize";
 //@import "../../node_modules/@blueprintjs/icons/lib/css/blueprint-icons";
 @import "../../node_modules/@blueprintjs/core/lib/css/blueprint";
 //@import "../../node_modules/@blueprintjs/popover2/lib/css/blueprint-popover2";
 //@import "../../../node_modules/prismjs/themes/prism-dark.css";
+
+// Used to render Markdown similar to Github
+@import "../../node_modules/github-markdown-css/github-markdown-light.css"

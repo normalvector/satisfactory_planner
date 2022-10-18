@@ -63,7 +63,7 @@ const SatisfactoryTracker = {
         if (token.isRaw) {
             inventory.addItem(name, token.delta)
             const total = inventory.getCount(name)
-            return `<p>Adding ${token.delta}x ${name} for ${total} remaining ${token.isLocal ? ' in local storage' : ''}</p>`
+            return `<p class="planner_data">Adding ${token.delta}x ${name} for ${total} remaining ${token.isLocal ? ' in local storage' : ''}</p>`
         }
 
         // Find the recipe
@@ -71,12 +71,12 @@ const SatisfactoryTracker = {
         const recipe: Recipe | undefined = globalRecipes.find((recipe) => recipe.name === name)
         console.log("Applying recipe ", recipe)
         if (!recipe) {
-            return `<p>Cannot find recipe '${name}'</p>`
+            return `<p class="planner_error">Cannot find recipe '${name}'</p>`
         }
 
         // Apply the recipe
         const recipeMsg = inventory.applyRecipe(recipe, token.delta, [localInventory, mainInventory])
-        return `<p>${recipeMsg}${token.isLocal ? ' to local storage' : ''}</p>`
+        return `<p class="planner_data">${recipeMsg}${token.isLocal ? ' to local storage' : ''}</p>`
     }
 }
 
@@ -112,12 +112,12 @@ const SatisfactoryInventorySummary = {
             (name) => {
                 const count = inventory.getCount(name)
                 // Skip items with zero count
-                return count != 0 ? `<li>${count}x ${name}${token.isLocal ? ' (Local)' : ''}</li>` : ''
+                return count != 0 ? `<li class="planner_data">${count}x ${name}${token.isLocal ? ' (Local)' : ''}</li>` : ''
             }
         ).join('')
         const output = `
         <div>
-        <ul>${itemSummary}</ul>
+        <ul class="planner_data">${itemSummary}</ul>
         </div>
         `
         console.log("OUTPUT: ", output)
@@ -166,7 +166,7 @@ function MarkdownRenderer(props: MarkdownRendererProps): React.ReactElement {
     const renderedMarkdown = marked.parse(markdown)
 
     return (
-        <div dangerouslySetInnerHTML={{ __html: renderedMarkdown }} />
+        <div className='markdown-body' dangerouslySetInnerHTML={{ __html: renderedMarkdown }} />
     )
 }
 
