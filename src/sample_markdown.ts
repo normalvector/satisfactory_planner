@@ -40,7 +40,7 @@ Just some simple constructors, all in a nice layout
 
 + 120 Iron Plate
 + 100 Iron Rod
-+ 57 Screw
++ 57 Screw !local
 + 23 Unknown Item
 
 ## Assemblers

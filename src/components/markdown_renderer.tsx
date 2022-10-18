@@ -16,6 +16,7 @@ var globalRecipes: Recipe[] = []
 
 // Stores everything in the inventory
 const mainInventory: Inventory = new Inventory()
+var localInventory: Inventory = new Inventory()
 
 const SatisfactoryTrackerName = 'SatisfactoryTracker'
 const SatisfactoryTracker = {
@@ -63,11 +64,14 @@ const SatisfactoryTracker = {
     renderer(token: any) {
         const name = token.name
 
+        // Get the correct inventory to use- main or local
+        const inventory = token.isLocal ? localInventory : mainInventory
+
         // If this is raw then just add the item
         if (token.isRaw) {
-            mainInventory.addItem(name, token.delta)
-            const total = mainInventory.getCount(name)
-            return `Adding ${token.delta}x ${name} for ${total} remaining`
+            inventory.addItem(name, token.delta)
+            const total = inventory.getCount(name)
+            return `Adding ${token.delta}x ${name} for ${total} remaining ${token.isLocal ? ' in local storage' : ''}`
         }
 
         // Find the recipe
@@ -76,16 +80,16 @@ const SatisfactoryTracker = {
         console.log("Applying recipe ", recipe)
 
         var message: string = recipe ?
-            `<p>${mainInventory.applyRecipe(recipe, token.delta)}</p>` :
+            `<p>${inventory.applyRecipe(recipe, token.delta)}${token.isLocal ? ' to local storage' : ''}</p>` :
             `<p>Cannot find recipe '${name}'</p>`
 
         return message
     }
 }
 
-const SatisfactoryInventoryName = 'SatisfactoryInventory'
-const SatisfactoryInventory = {
-    name: SatisfactoryInventoryName,
+const SatisfactoryInventorySummaryName = 'SatisfactoryInventory'
+const SatisfactoryInventorySummary = {
+    name: SatisfactoryInventorySummaryName,
     level: 'block',
     start(src: any) {
         return src.match(/^InventorySummary/)?.index
@@ -95,7 +99,7 @@ const SatisfactoryInventory = {
         const match = rule.exec(src)
         if (match) {
             const token = {
-                type: SatisfactoryInventoryName,
+                type: SatisfactoryInventorySummaryName,
                 raw: match[0],
                 tokens: []
             }
@@ -124,8 +128,37 @@ const SatisfactoryInventory = {
     }
 }
 
+const SatisfactoryLocalInventoryName = 'SatisfactoryLocalInventory'
+const SatisfactoryLocalInventory = {
+    name: SatisfactoryLocalInventoryName,
+    level: 'block',
+    start(src: any) {
+        return src.match(/^LocalInventory/)?.index
+    },
+    tokenizer(src: any, tokens: any) {
+        const rule = /^LocalInventory/
+        const match = rule.exec(src)
+        if (match) {
+            const token = {
+                type: SatisfactoryLocalInventoryName,
+                raw: match[0],
+                tokens: []
+            }
+            console.log("TOKENIZER TOKEN: ", token)
+
+            this.lexer.inline(token.raw, token.tokens)
+
+            return token
+        }
+    },
+    renderer(token: any) {
+        localInventory = new Inventory()
+
+        return <p>Resetting local inventory</p>
+    }
+}
 marked.use({
-    extensions: [SatisfactoryTracker, SatisfactoryInventory]
+    extensions: [SatisfactoryTracker, SatisfactoryInventorySummary, SatisfactoryLocalInventory]
 })
 function MarkdownRenderer(props: MarkdownRendererProps): React.ReactElement {
     const { markdown, recipes } = props
