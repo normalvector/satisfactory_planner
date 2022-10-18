@@ -1,6 +1,19 @@
 const basic_ingredients = `
 # Satisfactory Summary
 
+# Test Raw/Local
+
++1000 Iron Rod !raw
++2000 Iron Rod !raw local
+
+### After Raw (Main)
+InventorySummary
+
+### After Raw (Local)
+InventorySummary !local
+
++10 Screw
+
 ## Iron Miner Sources
 These are the basic iron sources, the three miners near the Iron Factory.
 
@@ -40,14 +53,23 @@ Just some simple constructors, all in a nice layout
 
 + 120 Iron Plate
 + 100 Iron Rod
-+ 57 Screw !local
 + 23 Unknown Item
 
 ## Assemblers
 
 LocalInventory
+
+InventorySummary
+
 + 57 Screw ! local
+
+InventorySummary
+
 + 7 Reinforced Iron Plate
+
+
+InventorySummary
+
 + 2 Rotor
 + 1 Modular Frame
 

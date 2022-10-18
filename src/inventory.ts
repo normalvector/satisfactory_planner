@@ -12,16 +12,33 @@ class Inventory {
         this._contents[name] = this.getCount(name) + count
     }
 
+    removeItem(name: string, count: number = 1) {
+        this.addItem(name, -count)
+    }
+
     getCount(name: string): number {
         return (this._contents[name] || 0)
     }
 
-    applyRecipe(recipe: Recipe, count: number = 1): string {
+    applyRecipe(recipe: Recipe, count: number = 1, prioritySourceInventory?: Inventory): string {
         console.log(`Applying ${count}x ${recipe.name}`)
 
         // Remove all of the ingredients
         for (const ingredient of recipe.ingredients) {
-            this.addItem(ingredient.name, -ingredient.count * count)
+            const name = ingredient.name
+            var remainingCount = ingredient.count * count
+
+            // Take as many as possible from priority source
+            if (prioritySourceInventory) {
+                const countFromPrioritySource = Math.max(
+                    remainingCount,
+                    prioritySourceInventory.getCount(name) || 0
+                )
+                prioritySourceInventory.removeItem(name, countFromPrioritySource)
+                remainingCount -= countFromPrioritySource
+            }
+
+            this.removeItem(ingredient.name, remainingCount)
         }
 
         // Add all of the produced items
