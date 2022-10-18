@@ -7,6 +7,7 @@ import * as SampleMarkdown from '../sample_markdown'
 import useLocalStorage from "use-local-storage";
 import Recipe from '../recipe'
 import { StandardRecipeJson } from '../standard_recipes'
+import MainNavbar from './main_navbar'
 import * as css from '../css/_main.scss'
 
 // Copy the CSS object so that it's not pruned..
@@ -59,7 +60,7 @@ function SatisfactoryPlanner(): React.ReactElement {
 
     return (
         <div>
-            <h1>Satisfactory Planner</h1>
+            <MainNavbar />
             <Tabs>
                 <Tab id="edit" title="Edit"
                     panel={
