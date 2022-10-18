@@ -34,7 +34,7 @@ function SatisfactoryPlanner(): React.ReactElement {
 
     return (
         <div>
-            <h1>Satisfactory Planner TANS</h1>
+            <h1>Satisfactory Planner</h1>
             <Tabs>
                 <Tab id="edit" title="Edit"
                     panel={

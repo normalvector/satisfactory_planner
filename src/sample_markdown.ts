@@ -76,85 +76,22 @@ InventorySummary !local
 
 ---
 
-+1000 Iron Rod !raw
-+2000 Iron Rod !raw local
+## Modular Frame Factory
+The last thing we're building is the [Modular Frame](https://satisfactory.fandom.com/wiki/Modular_Frame) Factory. As this is an early game factory we're only going to be running the Assembler at quarter speed.
 
-### After Raw (Main)
-InventorySummary
++0.25 Modular Frame
 
-### After Raw (Local)
-InventorySummary !local
-
-+10 Screw !local
-
-+20 Screw
-
-### After Screw (Main)
-InventorySummary
-
-### After Screw (Local)
-InventorySummary !local
-
-## Iron Miner Sources
-These are the basic iron sources, the three miners near the Iron Factory.
-
-### Miner 1
-This is the **impure** miner on the first node
-+ 60 Iron Ore
-
-### Miner 2
-+ 120 Iron Ore
-
-### Miner 3
-+ 60 Iron Ore
-
-+ 1020 Iron Ore
-
-## Inventory After Miners
-InventorySummary
-
-## Smelter
-
-+ 380 Iron Ingot
-
-We're also porting some ingots from other factories.
-TODO: Allow raw
-
-## Before Add
-InventorySummary
-
-+50000 Iron Ingot !raw
-
-## After Add
-InventorySummary
-
-## Constructors
-
-Just some simple constructors, all in a nice layout
-
-+ 120 Iron Plate
-+ 100 Iron Rod
-+ 23 Unknown Item
-
-## Assemblers
-
-LocalInventory
+### Inventory After Modular Frame Factory
+This is what remains in the main inventory after the Modular Frame Factory. We're starting to see decimals as we're running production at partial speeds here.
 
 InventorySummary
 
-+ 57 Screw ! local
-
-InventorySummary
-
-+ 7 Reinforced Iron Plate
-
-
-InventorySummary
-
-+ 2 Rotor
-+ 1 Modular Frame
+---
 
 ## Final Inventory
+This is the final summary of what's coming out of all of the factories and can be used
+as a quick summary of where we have excess and what's needed to run at full capacity.
+
 InventorySummary
 `
 

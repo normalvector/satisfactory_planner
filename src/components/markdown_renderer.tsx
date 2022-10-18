@@ -24,18 +24,18 @@ const SatisfactoryTracker = {
     level: 'block',
     start(src: any) {
         //console.log("\n\nSTART SRC: ", typeof (src), src)
-        return src.match(/^(\s*)([+-])\s*(\d+)\s*(.*)/)?.index
+        return src.match(/^(\s*)([+-])\s*(\d.?\d*)\s*(.*)/)?.index
     },
     tokenizer(src: any, tokens: any) {
-        const rule = /^(\s*)([+-])\s*(\d+)\s*([^!\n\r]*)(?:!([\w\s]*))?/
+        const rule = /^(\s*)([+-])\s*(\d.?\d*)\s*([^!\n\r]*)(?:!([\w\s]*))?/
         //const rule = /^(\s+)([+-])\s*(.*?)/
         const match = rule.exec(src)
         if (match) {
             // Get the number, display name, and canonical name of the items we're handling
             const delta =
                 match[2] === '-' ?
-                    -parseInt(match[3]) :
-                    parseInt(match[3])
+                    -parseFloat(match[3]) :
+                    parseFloat(match[3])
             const name = match[4].trim()
             const options = match[5]?.toLowerCase().split(/\s+/) || []
 
