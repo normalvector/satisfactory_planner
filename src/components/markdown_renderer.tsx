@@ -63,7 +63,7 @@ const SatisfactoryTracker = {
         if (token.isRaw) {
             inventory.addItem(name, token.delta)
             const total = inventory.getCount(name)
-            return `<p class="planner_data">Adding ${token.delta}x ${name} for ${total} remaining ${token.isLocal ? ' in local inventory' : ''}</p>`
+            return `<p class="planner_data">Adding ${token.delta}x ${name} for ${total} remaining ${token.isLocal ? ' to local inventory' : ''}</p>`
         }
 
         // Find the recipe
@@ -149,9 +149,9 @@ const SatisfactoryLocalInventory = {
         }
     },
     renderer(token: any) {
-        localInventory = new Inventory()
+        localInventory.clear()
 
-        return ('<p class="planner_data">Resetting local inventory</p>')
+        return ('<p class="planner_data"><i>Resetting local inventory</i></p>')
     }
 }
 
@@ -163,6 +163,9 @@ function MarkdownRenderer(props: MarkdownRendererProps): React.ReactElement {
     const { markdown, recipes } = props
 
     globalRecipes = recipes
+    mainInventory.clear()
+    localInventory.clear()
+
     const renderedMarkdown = marked.parse(markdown)
 
     return (

@@ -16,20 +16,45 @@ var processCss = css;
 
 
 function SatisfactoryPlanner(): React.ReactElement {
-    const [markdown, setMarkdown] = React.useState<string>(SampleMarkdown.basic_ingredients);
-    //const [markdown, setMarkdown] = useLocalStorage('markdown', initialMarkdown)
-    const [recipes, setRecipes] = React.useState<Recipe[]>(Recipe.fromJson(StandardRecipeJson))
-    //const [recipes, setRecipes] = useLocalStorage<Recipe[]>('recipes', Recipe.fromJson(StandardRecipeJson))
+    //const [markdown, setMarkdown] = React.useState<string>(SampleMarkdown.basic_ingredients);
+    const [markdown, setMarkdown] = useLocalStorage('markdown', SampleMarkdown.basic_ingredients)
 
+    //const [recipeJson, setRecipeJson] = React.useState<string>(JSON.stringify(StandardRecipeJson, null, 2))
+    const [recipeJson, setRecipeJson] = useLocalStorage('recipeJson', JSON.stringify(StandardRecipeJson, null, 2))
+
+    //const [recipes, setRecipes] = React.useState<Recipe[]|undefined>(undefined)
+    const [recipes, setRecipes] = useLocalStorage('recipes', Recipe.fromJson(StandardRecipeJson))
+
+    // Set Recipes when we load
+    React.useEffect(() => {
+        // Your code here
+        console.log("Loading recipes")
+        //setRecipes(Recipe.fromJson(JSON.parse(recipeJson))
+        onRecipeChange(recipeJson)
+    }, []);
+
+    //const [recipes, setRecipes] = useLocalStorage<Recipe[]>('recipes', Recipe.fromJson(StandardRecipeJson))
     const onMarkdownChange = (md: string) => {
         setMarkdown(md)
     }
-    const onRecipeChange = (recipes: Recipe[]) => {
-        setRecipes(recipes)
-        console.log("New recipes: ", recipes)
+    const onRecipeChange = (recipeJson: string | undefined) => {
+        recipeJson ||= ''
+
+        setRecipeJson(recipeJson)
+        console.log("New recipes: ", recipeJson)
+
+        try {
+            const recipeData = JSON.parse(recipeJson)
+            console.log("RD: ", recipeData)
+            setRecipes(Recipe.fromJson(recipeData))
+        } catch (e: any) {
+            // This is expected- the user will be entering a lot
+            // of broken JSON
+            // console.log("Parse error: ", e)
+        }
     }
     const onRecipeReset = () => {
-        setRecipes(Recipe.fromJson(StandardRecipeJson))
+        onRecipeChange(JSON.stringify(StandardRecipeJson))
     }
 
     return (
@@ -46,7 +71,7 @@ function SatisfactoryPlanner(): React.ReactElement {
                     <MarkdownRenderer markdown={markdown} recipes={recipes} />
                 } />
                 <Tab id="recipes" title="Recipes" panel={
-                    <RecipeEditor recipes={recipes} onChange={onRecipeChange} onReset={onRecipeReset} />
+                    <RecipeEditor recipeJson={recipeJson} onChange={onRecipeChange} onReset={onRecipeReset} />
                 } />
             </Tabs>
         </div >

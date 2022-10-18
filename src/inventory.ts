@@ -8,6 +8,10 @@ class Inventory {
         return Object.keys(this._contents)
     }
 
+    clear() {
+        this._contents = {}
+    }
+
     addItem(name: string, count: number = 1) {
         this._contents[name] = this.getCount(name) + count
     }
@@ -65,7 +69,12 @@ class Inventory {
             const remaining: number = this.getCount(name)
             return `${totalCount}x ${name} for ${remaining} total`
         }).join(', ')
-        var message = `${count >= 0 ? '+' : ''}${count}x ${recipe.name} (Using ${ingredientsMsg} to produce ${productMsg})`
+
+        // The message changes slightly based on if we're using ingredients
+        var message =
+            ingredientsMsg ?
+                `${count >= 0 ? '+' : ''}${count}x ${recipe.name} (Using ${ingredientsMsg} to produce ${productMsg})` :
+                `${count >= 0 ? '+' : ''}${count}x ${recipe.name} (Producing ${productMsg})`
 
         return message
     }
