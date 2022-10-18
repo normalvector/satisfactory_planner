@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run copy_static && node build.js",
     "build:watch": "npm run copy_static && node build.js --watch",
-    "copy_static": "syncdir static dist --deleteOrphaned",
+    "copy_static": "syncdir static build --deleteOrphaned",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

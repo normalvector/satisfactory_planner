@@ -30,7 +30,7 @@ const watchOptions = watch ?
 
 const options = {
     entryPoints: ['./src/_main.tsx'],
-    outfile: './dist/satisfactory_planner.js',
+    outfile: './build/satisfactory_planner.js',
     bundle: true,
     sourcemap: 'external',
     watch: watchOptions,
