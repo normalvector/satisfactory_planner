@@ -26,7 +26,13 @@ InventorySummary
 We're also porting some ingots from other factories.
 TODO: Allow raw
 
-+500 Iron Ingot !raw
+## Before Add
+InventorySummary
+
++50000 Iron Ingot !raw
+
+## After Add
+InventorySummary
 
 ## Constructors
 
@@ -40,7 +46,7 @@ Just some simple constructors, all in a nice layout
 ## Assemblers
 
 LocalInventory
-+ 57 Screw !local
++ 57 Screw ! local
 + 7 Reinforced Iron Plate
 + 2 Rotor
 + 1 Modular Frame

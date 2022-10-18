@@ -26,7 +26,7 @@ const SatisfactoryTracker = {
         return src.match(/^(\s*)([+-])\s*(\d+)\s*(.*)/)?.index
     },
     tokenizer(src: any, tokens: any) {
-        const rule = /^(\s*)([+-])\s*(\d+)\s*(.*)/
+        const rule = /^(\s*)([+-])\s*(\d+)\s*([^!\n\r]*)(?:!([\w\s]*))?/
         //const rule = /^(\s+)([+-])\s*(.*?)/
         const match = rule.exec(src)
         if (match) {
@@ -41,17 +41,18 @@ const SatisfactoryTracker = {
                 match[2] === '-' ?
                     -parseInt(match[3]) :
                     parseInt(match[3])
-            const displayName = match[4]
-            const canonicalName = displayName.toLowerCase()
+            const name = match[4].trim()
+            const options = match[5]?.toLowerCase().split(/\s+/) || []
             //console.log("TOKENIZER VALUE/NAME: ", delta, ' x ', canonicalName)
 
             const token = {
                 type: SatisfactoryTrackerName,
                 raw: match[0],
                 delta: delta,
-                displayName: displayName,
-                canonicalName: canonicalName,
-                tokens: []
+                name: name,
+                tokens: [],
+                isRaw: options.includes('raw'),
+                isLocal: options.includes('local')
             }
             //console.log("TOKENIZER TOKEN: ", token)
 
@@ -60,22 +61,24 @@ const SatisfactoryTracker = {
         }
     },
     renderer(token: any) {
-        //console.log("TOKENIZER RENDERER: ", token)
+        const name = token.name
+
+        // If this is raw then just add the item
+        if (token.isRaw) {
+            mainInventory.addItem(name, token.delta)
+            const total = mainInventory.getCount(name)
+            return `Adding ${token.delta}x ${name} for ${total} remaining`
+        }
 
         // Find the recipe
         console.log("GLOBAL RECIPES: ", globalRecipes)
-        const recipeName = token.displayName
-        const recipe: Recipe | undefined = globalRecipes.find((recipe) => recipe.name == recipeName)
+        const recipe: Recipe | undefined = globalRecipes.find((recipe) => recipe.name === name)
         console.log("Applying recipe ", recipe)
+
         var message: string = recipe ?
             `<p>${mainInventory.applyRecipe(recipe, token.delta)}</p>` :
-            `<p>Cannot find recipe '${recipeName}'</p>`
+            `<p>Cannot find recipe '${name}'</p>`
 
-        //const trackedValue = itemTracker[token.canonicalName]
-
-        //const output = `<p><pre>${token.delta >= 0 ? '+' : ''}${token.delta} ${recipeName} </pre></p>`
-        //const output = `<p><pre>${token.delta >= 0 ? '+' : ''}${token.delta} ${token.displayName} (${trackedValue})</pre></p>`
-        //console.log("TOKENIZER RENDERER OUTPUT: ", output)
         return message
     }
 }
