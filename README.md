@@ -45,6 +45,7 @@ To use this local inventory put ```ResetLocalInventory``` at the start of the fa
 To view the current content of this local inventory we use ```InventorySummary !local```.
 
 ## ToDo
+* Include the amount of time taken to produce things
 * Different verbosity for production lines
 * Confirmation of things such as resetting MD/Recipes
 * Allow plurals and aliases for recipes
@@ -52,6 +53,7 @@ To view the current content of this local inventory we use ```InventorySummary !
 * Filter inventory to only list certain items
 * Import/Export settings to JSON file for local store
 * Deploy build onto Github pages
+* Inline calculator
 
 ## Stuff
 

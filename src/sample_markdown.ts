@@ -7,11 +7,13 @@ This is intended as a sample summary for a basic early-game iron factory in orde
 ## Mining and Smelting
 We've tapped three nodes near our starting location and have started to smelt some of the results.
 
+*For the Miners we use the amount of resource being produced, and for the Smelters (and all other production) we use the number of machines*
+
 +60 Iron Ore
 +60 Iron Ore
 +30 Iron Ore
 
-+90 Iron Ingot
++5 Iron Ingot
 
 ### Inventory After Mining and Smelting
 InventorySummary
@@ -43,6 +45,9 @@ ResetLocalInventory
 ### Inventory After Rotor Factory
 This is what remains in the main inventory after the rotor factory, it doesn't include
 the screws as they were made local to the factory and not returned to the main inventory.
+
+Here we have a negative amount of iron rods and so know there's a problem and we need to
+produce more of them.
 
 InventorySummary
 
@@ -91,6 +96,8 @@ InventorySummary
 ## Final Inventory
 This is the final summary of what's coming out of all of the factories and can be used
 as a quick summary of where we have excess and what's needed to run at full capacity.
+
+Again we have a negative number of Iron Rods due to needing to ramp up their production.
 
 InventorySummary
 `

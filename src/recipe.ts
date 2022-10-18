@@ -5,6 +5,7 @@
 type RecipeJsonList = string | { [name: string]: number }
 export interface RecipeJson {
     name: string;
+    time: number;
     produces?: RecipeJsonList;
     ingredients?: RecipeJsonList;
 }
@@ -15,17 +16,20 @@ interface RecipeItem {
 }
 class Recipe {
     _name: string;
+    _time: number;
     _produces: RecipeItem[];
     _ingredients: RecipeItem[];
 
 
     constructor(
         name: string,
+        time: number,
         produces: RecipeItem[],
         ingredients: RecipeItem[]
     ) {
         // Copy variables to private vars
         this._name = name
+        this._time = time
         this._produces = produces
         this._ingredients = ingredients
     }
@@ -35,13 +39,17 @@ class Recipe {
         const ingredientsStr: string = this._ingredients.map((item) => `${item.count}x ${item.name}`).join(',')
 
         if (!ingredientsStr) {
-            return `${this._name}: Produces ${producesStr}`
+            return `${this._name}: Produces ${producesStr} in ${this.time}s`
         }
-        return `${this._name}: Produces ${producesStr} from ${ingredientsStr}`
+        return `${this._name}: Produces ${producesStr} from ${ingredientsStr} in ${this.time}s`
     }
 
     get name() {
         return this._name;
+    }
+
+    get time() {
+        return this._time;
     }
 
     get produces() {
@@ -55,6 +63,7 @@ class Recipe {
     static fromJson(json: RecipeJson[]): Recipe[] {
         return json.map((jsonItem) => {
             const name = jsonItem.name
+            const time = jsonItem.time
 
             // If we don't have a 'produces' entry we default to producing 1x 'name'
             const produces: RecipeItem[] = this.jsonListToRecipeList(jsonItem.produces) || [{ name: name, count: 1 }]
@@ -63,7 +72,7 @@ class Recipe {
             // miners
             const ingredients: RecipeItem[] = this.jsonListToRecipeList(jsonItem.ingredients) || []
 
-            const recipe = new Recipe(name, produces, ingredients)
+            const recipe = new Recipe(name, time, produces, ingredients)
             console.log("Produced recipe ", recipe.toString(), recipe, " from JSON ", JSON.stringify(json, null, 2))
 
             return recipe
@@ -89,23 +98,7 @@ class Recipe {
                     (name: string) => { return { name: name, count: json[name] } }
                 )
         )
-        // Ensure we have an array
-        //const jsonArray = Array.isArray(json) ? json : [json]
-
-        //return jsonArray.map((item) => Recipe.jsonItemToRecipeItem(item))
     }
-
-    /*
-    private static jsonItemToRecipeItem(jsonItem: RecipeJsonListItem): RecipeItem {
-        // If it's a simple string then add 1 of them
-        if (typeof jsonItem === 'string') {
-            return { name: jsonItem, count: 1 }
-        }
-
-        // We have an array and so have count/name tuple
-        return { name: jsonItem[1], count: jsonItem[0] }
-    }
-    */
 }
 
 export default Recipe

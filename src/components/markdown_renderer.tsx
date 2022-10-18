@@ -111,8 +111,9 @@ const SatisfactoryInventorySummary = {
         const itemSummary = inventory.itemNames().map(
             (name) => {
                 const count = inventory.getCount(name)
+                const className = count < 0 ? 'planner_warning' : 'planner_data'
                 // Skip items with zero count
-                return count != 0 ? `<li class="planner_data">${count}x ${name}${token.isLocal ? ' (Local)' : ''}</li>` : ''
+                return count != 0 ? `<li class="${className}">${count}x ${name}${token.isLocal ? ' (Local)' : ''}</li>` : ''
             }
         ).join('')
         const output = `
