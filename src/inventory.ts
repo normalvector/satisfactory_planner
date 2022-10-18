@@ -20,23 +20,29 @@ class Inventory {
         return (this._contents[name] || 0)
     }
 
-    applyRecipe(recipe: Recipe, count: number = 1, prioritySourceInventory?: Inventory): string {
+    applyRecipe(recipe: Recipe, count: number = 1, sources?: Inventory[]): string {
         console.log(`Applying ${count}x ${recipe.name}`)
+
+        // If a source isn't provided assume it's us
+        sources ||= [this]
 
         // Remove all of the ingredients
         for (const ingredient of recipe.ingredients) {
             const name = ingredient.name
             var remainingCount = ingredient.count * count
 
-            // Take as many as possible from priority source
-            if (prioritySourceInventory) {
-                const countFromPrioritySource = Math.max(
+            // Take as many as possible from each source in order 
+            for (const source of sources) {
+                const countFromSource = Math.min(
                     remainingCount,
-                    prioritySourceInventory.getCount(name) || 0
+                    source.getCount(name) || 0
                 )
-                prioritySourceInventory.removeItem(name, countFromPrioritySource)
-                remainingCount -= countFromPrioritySource
+                source.removeItem(name, countFromSource)
+                remainingCount -= countFromSource
             }
+
+            // Take the remainder from the final source even if it goes negative
+            sources[sources.length - 1].removeItem(name, remainingCount)
 
             this.removeItem(ingredient.name, remainingCount)
         }
@@ -50,7 +56,8 @@ class Inventory {
             const totalCount = ingredient.count * count
             const name = ingredient.name
             const remaining: number = this.getCount(name)
-            return `${totalCount}x ${name} with ${remaining} remaining`
+            return `${totalCount}x ${name}`
+            //return `${totalCount}x ${name} with ${remaining} remaining`
         }).join(', ')
         var productMsg = recipe.produces.map((product) => {
             const totalCount = product.count * count
@@ -58,7 +65,7 @@ class Inventory {
             const remaining: number = this.getCount(name)
             return `${totalCount}x ${name} for ${remaining} total`
         }).join(', ')
-        var message = `${count >= 0 ? '+' : ''}${count}x ${recipe.name} (Using ${ingredientsMsg}, to produce ${productMsg})`
+        var message = `${count >= 0 ? '+' : ''}${count}x ${recipe.name} (Using ${ingredientsMsg} to produce ${productMsg})`
 
         return message
     }

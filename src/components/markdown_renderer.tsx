@@ -75,7 +75,7 @@ const SatisfactoryTracker = {
         }
 
         // Apply the recipe
-        const recipeMsg = inventory.applyRecipe(recipe, token.delta, localInventory)
+        const recipeMsg = inventory.applyRecipe(recipe, token.delta, [localInventory, mainInventory])
         return `<p>${recipeMsg}${token.isLocal ? ' to local storage' : ''}</p>`
     }
 }
@@ -111,7 +111,8 @@ const SatisfactoryInventorySummary = {
         const itemSummary = inventory.itemNames().map(
             (name) => {
                 const count = inventory.getCount(name)
-                return `<li>${count}x ${name}${token.isLocal ? ' (Local)' : ''}</li>`
+                // Skip items with zero count
+                return count != 0 ? `<li>${count}x ${name}${token.isLocal ? ' (Local)' : ''}</li>` : ''
             }
         ).join('')
         const output = `
@@ -129,10 +130,10 @@ const SatisfactoryLocalInventory = {
     name: SatisfactoryLocalInventoryName,
     level: 'block',
     start(src: any) {
-        return src.match(/^LocalInventory/)?.index
+        return src.match(/^ResetLocalInventory/)?.index
     },
     tokenizer(src: any, tokens: any) {
-        const rule = /^LocalInventory/
+        const rule = /^ResetLocalInventory/
         const match = rule.exec(src)
         if (match) {
             const token = {
