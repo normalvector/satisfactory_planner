@@ -5,7 +5,7 @@ const basic_ingredients = `
 These are the basic iron sources.
 
 **Miner 1:**
-This is the pure miner on the first node
+This is the **pure** miner on the first node
 + 60 Iron Ore
 
 **Miner 2:**

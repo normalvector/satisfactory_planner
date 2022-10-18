@@ -1,8 +1,12 @@
 import * as React from 'react'
 import MarkdownEditor from './markdown_editor'
 import MarkdownRenderer from './markdown_renderer'
+import RecipeEditor from './recipe_editor'
 import { Tab, Tabs } from '@blueprintjs/core'
 import * as SampleMarkdown from '../sample_markdown'
+import useLocalStorage from "use-local-storage";
+import Recipe from '../recipe'
+import { StandardRecipeJson } from '../standard_recipes'
 
 import * as css from '../css/_main.scss'
 
@@ -16,29 +20,39 @@ function SatisfactoryPlanner(): React.ReactElement {
     // Get the sample data
     const initialMarkdown = SampleMarkdown.basic_ingredients
 
-    const [markdown, setMarkdown] = React.useState<string>(initialMarkdown);
+    //const [markdown, setMarkdown] = React.useState<string>(initialMarkdown);
+    const [markdown, setMarkdown] = useLocalStorage('markdown', initialMarkdown)
+    const [recipes, setRecipes] = useLocalStorage<Recipe[]>('recipes', Recipe.fromJson(StandardRecipeJson))
 
     const onMarkdownChange = (md: string) => {
         setMarkdown(md)
+    }
+    const onRecipeChange = (recipes: Recipe[]) => {
+        setRecipes(recipes)
+        console.log("New recipes: ", recipes)
+    }
+    const onRecipeReset = () => {
+        setRecipes(Recipe.fromJson(StandardRecipeJson))
     }
 
     return (
         <div>
             <h1>Satisfactory Planner TANS</h1>
             <Tabs>
-                <Tab id="markdown" title="Markdown"
+                <Tab id="edit" title="Edit"
                     panel={
                         <div>
                             <MarkdownEditor markdown={markdown} onChange={onMarkdownChange} />
-                            <MarkdownRenderer markdown={markdown} />
                         </div>
                     } />
-                <Tab id="items" title="Items">
-
-                </Tab>
-                <Tab id="recipes" title="Recipes"></Tab>
+                <Tab id="review" title="Review" panel={
+                    <MarkdownRenderer markdown={markdown} />
+                } />
+                <Tab id="recipes" title="Recipes" panel={
+                    <RecipeEditor recipes={recipes} onChange={onRecipeChange} onReset={onRecipeReset} />
+                } />
             </Tabs>
-        </div>
+        </div >
     )
 }
 

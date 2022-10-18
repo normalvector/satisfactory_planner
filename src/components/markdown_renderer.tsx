@@ -13,7 +13,7 @@ const SatisfactoryTracker = {
     name: SatisfactoryTrackerName,
     level: 'block',
     start(src: any) {
-        console.log("\n\nSTART SRC: ", typeof (src), src)
+        //console.log("\n\nSTART SRC: ", typeof (src), src)
         return src.match(/^(\s*)([+-])\s*(\d+)\s*(.*)/)?.index
     },
     tokenizer(src: any, tokens: any) {
@@ -21,11 +21,11 @@ const SatisfactoryTracker = {
         //const rule = /^(\s+)([+-])\s*(.*?)/
         const match = rule.exec(src)
         if (match) {
-            console.log('----------------')
-            console.log("TOKENIZER SRC: ", typeof (src), src)
-            console.log("TOKENIZER TOKENS: ", typeof (tokens), tokens)
+            //console.log('----------------')
+            //console.log("TOKENIZER SRC: ", typeof (src), src)
+            //console.log("TOKENIZER TOKENS: ", typeof (tokens), tokens)
 
-            console.log("TOKENIZER MATCH: ", match)
+            //console.log("TOKENIZER MATCH: ", match)
 
             // Get the number, display name, and canonical name of the items we're handling
             const delta =
@@ -34,7 +34,7 @@ const SatisfactoryTracker = {
                     parseInt(match[3])
             const displayName = match[4]
             const canonicalName = displayName.toLowerCase()
-            console.log("TOKENIZER VALUE/NAME: ", delta, ' x ', canonicalName)
+            //console.log("TOKENIZER VALUE/NAME: ", delta, ' x ', canonicalName)
 
             const token = {
                 type: SatisfactoryTrackerName,
@@ -44,14 +44,14 @@ const SatisfactoryTracker = {
                 canonicalName: canonicalName,
                 tokens: []
             }
-            console.log("TOKENIZER TOKEN: ", token)
+            //console.log("TOKENIZER TOKEN: ", token)
 
             this.lexer.inline(token.raw, token.tokens)
             return token
         }
     },
     renderer(token: any) {
-        console.log("TOKENIZER RENDERER: ", token)
+        //console.log("TOKENIZER RENDERER: ", token)
 
         // Adjust the tracking values
         itemTracker[token.canonicalName] ||= 0
@@ -59,7 +59,7 @@ const SatisfactoryTracker = {
         const trackedValue = itemTracker[token.canonicalName]
 
         const output = `<p><pre>${token.delta >= 0 ? '+' : ''}${token.delta} ${token.displayName} (${trackedValue})</pre></p>`
-        console.log("TOKENIZER RENDERER OUTPUT: ", output)
+        //console.log("TOKENIZER RENDERER OUTPUT: ", output)
         return output
     }
 }
