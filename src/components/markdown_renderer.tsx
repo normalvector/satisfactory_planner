@@ -63,7 +63,7 @@ const SatisfactoryTracker = {
         if (token.isRaw) {
             inventory.addItem(name, token.delta)
             const total = inventory.getCount(name)
-            return `<p class="planner_data">Adding ${token.delta}x ${name} for ${total} remaining ${token.isLocal ? ' in local storage' : ''}</p>`
+            return `<p class="planner_data">Adding ${token.delta}x ${name} for ${total} remaining ${token.isLocal ? ' in local inventory' : ''}</p>`
         }
 
         // Find the recipe
@@ -76,7 +76,7 @@ const SatisfactoryTracker = {
 
         // Apply the recipe
         const recipeMsg = inventory.applyRecipe(recipe, token.delta, [localInventory, mainInventory])
-        return `<p class="planner_data">${recipeMsg}${token.isLocal ? ' to local storage' : ''}</p>`
+        return `<p class="planner_data">${recipeMsg}${token.isLocal ? ' to local inventory' : ''}</p>`
     }
 }
 
@@ -151,7 +151,7 @@ const SatisfactoryLocalInventory = {
     renderer(token: any) {
         localInventory = new Inventory()
 
-        return ('<p>Resetting local inventory</p>')
+        return ('<p class="planner_data">Resetting local inventory</p>')
     }
 }
 
