@@ -5,7 +5,7 @@ class Inventory {
     private _contents: { [name: string]: number } = {}
 
     itemNames(): string[] {
-        return Object.keys(this._contents)
+        return Object.keys(this._contents).sort()
     }
 
     clear() {
