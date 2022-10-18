@@ -22,7 +22,8 @@ function SatisfactoryPlanner(): React.ReactElement {
 
     //const [markdown, setMarkdown] = React.useState<string>(initialMarkdown);
     const [markdown, setMarkdown] = useLocalStorage('markdown', initialMarkdown)
-    const [recipes, setRecipes] = useLocalStorage<Recipe[]>('recipes', Recipe.fromJson(StandardRecipeJson))
+    //const [recipes, setRecipes] = useLocalStorage<Recipe[]>('recipes', Recipe.fromJson(StandardRecipeJson))
+    const [recipes, setRecipes] = React.useState<Recipe[]>(Recipe.fromJson(StandardRecipeJson))
 
     const onMarkdownChange = (md: string) => {
         setMarkdown(md)

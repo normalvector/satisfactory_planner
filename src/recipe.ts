@@ -52,26 +52,22 @@ class Recipe {
         return this._ingredients
     }
 
-    static fromJson(json: RecipeJson | RecipeJson[]) {
-        // If we have an array we recurse down
-        if (Array.isArray(json)) {
-            return json.map((jsonItem) => Recipe.fromJson(jsonItem))
-        }
+    static fromJson(json: RecipeJson[]): Recipe[] {
+        return json.map((jsonItem) => {
+            const name = jsonItem.name
 
-        // We have a single item- handle it
-        const name = json.name
+            // If we don't have a 'produces' entry we default to producing 1x 'name'
+            const produces: RecipeItem[] = this.jsonListToRecipeList(jsonItem.produces) || [{ name: name, count: 1 }]
 
-        // If we don't have a 'produces' entry we default to producing 1x 'name'
-        const produces: RecipeItem[] = this.jsonListToRecipeList(json.produces) || [{ name: name, count: 1 }]
+            // If we don't have any ingredients we default to not needing any- this is suitable for
+            // miners
+            const ingredients: RecipeItem[] = this.jsonListToRecipeList(jsonItem.ingredients) || []
 
-        // If we don't have any ingredients we default to not needing any- this is suitable for
-        // miners
-        const ingredients: RecipeItem[] = this.jsonListToRecipeList(json.ingredients) || []
+            const recipe = new Recipe(name, produces, ingredients)
+            console.log("Produced recipe ", recipe.toString(), recipe, " from JSON ", JSON.stringify(json, null, 2))
 
-        const recipe = new Recipe(name, produces, ingredients)
-        console.log("Produced recipe ", recipe.toString(), recipe, " from JSON ", JSON.stringify(json, null, 2))
-
-        return recipe
+            return recipe
+        })
     }
 
     private static jsonListToRecipeList(json: RecipeJsonList | undefined): RecipeItem[] | undefined {
