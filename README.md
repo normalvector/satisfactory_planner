@@ -1,5 +1,7 @@
 # Satisfactory Planner
 
+**The planner itself is [here](https://normalvector.github.io/satisfactory_planner/)**
+
 ## The Factory Must Expand To Meet The Growing Needs Of The Factory
 
 This is a notebook application designed so [Satisfactory](https://www.satisfactorygame.com/) players can keep a notebook on what their factory is doing and have their inputs and outputs tracked inline with their notes, updating the inventory as it goes on.
