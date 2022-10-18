@@ -6,6 +6,10 @@ const StandardRecipeJson: RecipeJson[] = [
         name: 'Iron Ore'
     },
     {
+        name: 'Iron Ingot',
+        ingredients: 'Iron Ore'
+    },
+    {
         name: 'Iron Plate',
         produces: { 'Iron Plate': 2 },
         ingredients: { 'Iron Ingot': 3 }
@@ -41,12 +45,6 @@ const StandardRecipeJson: RecipeJson[] = [
         }
     }
 ]
-
-/*
-const StandardRecipes: Recipe[] = StandardRecipeJson.map(
-    (recipeJson) => Recipe.fromJson(recipeJson)
-)
-*/
 
 export {
     //    StandardRecipes,

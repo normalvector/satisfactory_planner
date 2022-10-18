@@ -20,7 +20,7 @@ function MarkdownEditor(props: MarkdownEditorProps): React.ReactElement {
             onChange={onChangeWrapper}
             language="markdown"
             theme="vs-dark"
-            height='10rem'
+            height="30rem"
         />
     )
 }

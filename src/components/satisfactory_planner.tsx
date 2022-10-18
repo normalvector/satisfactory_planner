@@ -7,7 +7,6 @@ import * as SampleMarkdown from '../sample_markdown'
 import useLocalStorage from "use-local-storage";
 import Recipe from '../recipe'
 import { StandardRecipeJson } from '../standard_recipes'
-
 import * as css from '../css/_main.scss'
 
 // Copy the CSS object so that it's not pruned..
@@ -17,13 +16,10 @@ var processCss = css;
 
 
 function SatisfactoryPlanner(): React.ReactElement {
-    // Get the sample data
-    const initialMarkdown = SampleMarkdown.basic_ingredients
-
-    //const [markdown, setMarkdown] = React.useState<string>(initialMarkdown);
-    const [markdown, setMarkdown] = useLocalStorage('markdown', initialMarkdown)
-    //const [recipes, setRecipes] = useLocalStorage<Recipe[]>('recipes', Recipe.fromJson(StandardRecipeJson))
+    const [markdown, setMarkdown] = React.useState<string>(SampleMarkdown.basic_ingredients);
+    //const [markdown, setMarkdown] = useLocalStorage('markdown', initialMarkdown)
     const [recipes, setRecipes] = React.useState<Recipe[]>(Recipe.fromJson(StandardRecipeJson))
+    //const [recipes, setRecipes] = useLocalStorage<Recipe[]>('recipes', Recipe.fromJson(StandardRecipeJson))
 
     const onMarkdownChange = (md: string) => {
         setMarkdown(md)
@@ -47,7 +43,7 @@ function SatisfactoryPlanner(): React.ReactElement {
                         </div>
                     } />
                 <Tab id="review" title="Review" panel={
-                    <MarkdownRenderer markdown={markdown} />
+                    <MarkdownRenderer markdown={markdown} recipes={recipes} />
                 } />
                 <Tab id="recipes" title="Recipes" panel={
                     <RecipeEditor recipes={recipes} onChange={onRecipeChange} onReset={onRecipeReset} />

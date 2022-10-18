@@ -1,12 +1,21 @@
 import * as React from 'react'
 import { marked } from 'marked'
+import Inventory from '../inventory'
+import Recipe from '../recipe'
 
 interface MarkdownRendererProps {
-    markdown: string
+    markdown: string,
+    recipes: Recipe[]
 }
 
 // {"Iron Ingots": 30, "Iron Ore": -30}
-var itemTracker = {}
+//var itemTracker = {}
+
+// This stores the recipes- it's currently global to allow the MD plugins to use it
+var globalRecipes: Recipe[] = []
+
+// Stores everything in the inventory
+const mainInventory: Inventory = new Inventory()
 
 const SatisfactoryTrackerName = 'SatisfactoryTracker'
 const SatisfactoryTracker = {
@@ -53,14 +62,21 @@ const SatisfactoryTracker = {
     renderer(token: any) {
         //console.log("TOKENIZER RENDERER: ", token)
 
-        // Adjust the tracking values
-        itemTracker[token.canonicalName] ||= 0
-        itemTracker[token.canonicalName] += token.delta
-        const trackedValue = itemTracker[token.canonicalName]
+        // Find the recipe
+        console.log("GLOBAL RECIPES: ", globalRecipes)
+        const recipeName = token.displayName
+        const recipe: Recipe | undefined = globalRecipes.find((recipe) => recipe.name == recipeName)
+        console.log("Applying recipe ", recipe)
+        var message: string = recipe ?
+            `<p>${mainInventory.applyRecipe(recipe, token.delta)}</p>` :
+            `<p>Cannot find recipe '${recipeName}'</p>`
 
-        const output = `<p><pre>${token.delta >= 0 ? '+' : ''}${token.delta} ${token.displayName} (${trackedValue})</pre></p>`
+        //const trackedValue = itemTracker[token.canonicalName]
+
+        //const output = `<p><pre>${token.delta >= 0 ? '+' : ''}${token.delta} ${recipeName} </pre></p>`
+        //const output = `<p><pre>${token.delta >= 0 ? '+' : ''}${token.delta} ${token.displayName} (${trackedValue})</pre></p>`
         //console.log("TOKENIZER RENDERER OUTPUT: ", output)
-        return output
+        return message
     }
 }
 
@@ -88,13 +104,13 @@ const SatisfactoryInventory = {
         }
     },
     renderer(token: any) {
-        const itemNames = Object.keys(itemTracker).sort()
-        const itemSummary = itemNames.map(
+        //return 'WIBBLE'
+        const itemSummary = mainInventory.itemNames().map(
             (name) => {
-                const count = itemTracker[name]
-                return `<li>${count}\ ${name}</li>`
+                const count = mainInventory.getCount(name)
+                return `<li>${count}x ${name}</li>`
             }
-        )
+        ).join('')
         const output = `
         <div>
         <ul>${itemSummary}</ul>
@@ -109,9 +125,9 @@ marked.use({
     extensions: [SatisfactoryTracker, SatisfactoryInventory]
 })
 function MarkdownRenderer(props: MarkdownRendererProps): React.ReactElement {
-    const { markdown } = props
-    itemTracker = {}
+    const { markdown, recipes } = props
 
+    globalRecipes = recipes
     const renderedMarkdown = marked.parse(markdown)
 
     return (

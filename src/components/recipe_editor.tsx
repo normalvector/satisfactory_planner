@@ -4,7 +4,7 @@ import { Button } from '@blueprintjs/core'
 import Recipe from '../recipe'
 
 interface RecipeEditorProps {
-    recipes?: typeof Recipe[],
+    recipes?: Recipe[],
     onChange: (recipes: Recipe[]) => void,
     onReset?: () => void
 }
@@ -45,7 +45,7 @@ function RecipeEditor(props: RecipeEditorProps): React.ReactElement {
                 onChange={onChangeWrapper}
                 language="json"
                 theme="vs-dark"
-                height='10rem'
+                height='30rem'
             />
             <Button icon="refresh" intent="danger" text="Reset Recipes" onClick={onReset} />
         </div>
