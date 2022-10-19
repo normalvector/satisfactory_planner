@@ -808,7 +808,7 @@ const StandardRecipeJson: RecipeJson[] = [
         },
         time: 4,
         machine: 'Packager'
-    }
+    },
     {
         name: 'Unpackage Oil',
         produces: {
@@ -1587,7 +1587,7 @@ const StandardRecipeJson: RecipeJson[] = [
             'Plastic': 2
         },
         ingredients: {
-            'Polymer Resin': 6
+            'Polymer Resin': 6,
             'Water': 2
         },
         time: 6,
@@ -2291,7 +2291,7 @@ const StandardRecipeJson: RecipeJson[] = [
         },
         time: 20,
         machine: 'Assembler',
-        time: 20
+        isAlternate: true
     },
     {
         name: 'Super-State Computer',

@@ -8,6 +8,8 @@ import useLocalStorage from "use-local-storage";
 import Recipe from '../recipe'
 import { StandardRecipeJson } from '../standard_recipes'
 import MainNavbar from './main_navbar'
+import RecipeValidationReport from '../recipe_list_validator'
+
 import * as css from '../css/_main.scss'
 
 // Copy the CSS object so that it's not pruned..
@@ -42,17 +44,21 @@ function SatisfactoryPlanner(): React.ReactElement {
         recipeJson ||= ''
 
         setRecipeJson(recipeJson)
-        console.log("New recipes: ", recipeJson)
+        //console.log("New recipes: ", recipeJson)
 
         try {
             const recipeData = JSON.parse(recipeJson)
-            console.log("RD: ", recipeData)
-            setRecipes(Recipe.fromJson(recipeData))
+            //console.log("RD: ", recipeData)
+            const recipes = Recipe.fromJson(recipeData)
+            RecipeValidationReport.validateRecipesToConsole(recipes)
+
+            setRecipes(recipes)
         } catch (e: any) {
             // This is expected- the user will be entering a lot
             // of broken JSON
             // console.log("Parse error: ", e)
         }
+
     }
     const onRecipeReset = () => {
         onRecipeChange(JSON.stringify(StandardRecipeJson))

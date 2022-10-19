@@ -54,7 +54,7 @@ class Recipe {
         return this._time;
     }
 
-    get produces() {
+    get products() {
         return this._produces
     }
 
@@ -75,7 +75,7 @@ class Recipe {
             const ingredients: RecipeItem[] = this.jsonListToRecipeList(jsonItem.ingredients) || []
 
             const recipe = new Recipe(name, time, produces, ingredients)
-            console.log("Produced recipe ", recipe.toString(), recipe, " from JSON ", JSON.stringify(json, null, 2))
+            // console.log("Produced recipe ", recipe.toString(), recipe, " from JSON ", JSON.stringify(json, null, 2))
 
             return recipe
         })

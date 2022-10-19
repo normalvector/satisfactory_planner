@@ -67,9 +67,9 @@ const SatisfactoryTracker = {
         }
 
         // Find the recipe
-        console.log("GLOBAL RECIPES: ", globalRecipes)
+        //console.log("GLOBAL RECIPES: ", globalRecipes)
         const recipe: Recipe | undefined = globalRecipes.find((recipe) => recipe.name === name)
-        console.log("Applying recipe ", recipe)
+        //console.log("Applying recipe ", recipe)
         if (!recipe) {
             return `<p class="planner_error">Cannot find recipe '${name}'</p>`
         }
@@ -92,14 +92,14 @@ const SatisfactoryInventorySummary = {
         const match = rule.exec(src)
         if (match) {
             const options = match[1]?.toLowerCase().split(/\s+/) || []
-            console.log("INV OPTS: ", options)
+            //console.log("INV OPTS: ", options)
             const token = {
                 type: SatisfactoryInventorySummaryName,
                 raw: match[0],
                 isLocal: options.includes('local'),
                 tokens: []
             }
-            console.log("TOKENIZER TOKEN: ", token)
+            //console.log("TOKENIZER TOKEN: ", token)
 
             this.lexer.inline(token.raw, token.tokens)
 
@@ -121,7 +121,7 @@ const SatisfactoryInventorySummary = {
         <ul class="planner_data">${itemSummary}</ul>
         </div>
         `
-        console.log("OUTPUT: ", output)
+        //console.log("OUTPUT: ", output)
         return output
     }
 }
@@ -142,7 +142,7 @@ const SatisfactoryLocalInventory = {
                 raw: match[0],
                 tokens: []
             }
-            console.log("TOKENIZER TOKEN: ", token)
+            ///console.log("TOKENIZER TOKEN: ", token)
 
             this.lexer.inline(token.raw, token.tokens)
 

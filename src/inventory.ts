@@ -25,12 +25,12 @@ class Inventory {
     }
 
     applyRecipe(recipe: Recipe, count: number = 1, sources?: Inventory[]): string {
-        console.log(`Applying ${count}x ${recipe.name}`)
+        //console.log(`Applying ${count}x ${recipe.name}`)
 
         const time = recipe.time
         const recipesPerMinute = 60.0 / time
 
-        console.log("RECIPE TIME: ", time, recipesPerMinute)
+        //console.log("RECIPE TIME: ", time, recipesPerMinute)
         // If a source isn't provided assume it's us
         sources ||= [this]
 
@@ -56,7 +56,7 @@ class Inventory {
         }
 
         // Add all of the produced items
-        for (const product of recipe.produces) {
+        for (const product of recipe.ingredients) {
             const countPerMinute = product.count * count * recipesPerMinute
             this.addItem(product.name, countPerMinute)
         }
@@ -68,7 +68,7 @@ class Inventory {
             return `${totalCount}x ${name}`
             //return `${totalCount}x ${name} with ${remaining} remaining`
         }).join(', ')
-        var productMsg = recipe.produces.map((product) => {
+        var productMsg = recipe.ingredients.map((product) => {
             const totalCount = product.count * count * recipesPerMinute
             const name = product.name
             const remaining: number = this.getCount(name)
