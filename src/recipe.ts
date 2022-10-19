@@ -8,6 +8,8 @@ export interface RecipeJson {
     time: number;
     produces?: RecipeJsonList;
     ingredients?: RecipeJsonList;
+    machine: 'Assembler' | 'Blender' | 'Constructor' | 'Foundry' | 'Manual' | 'Manufacturer' | 'Miner' | 'Nuclear Power Plant' | 'Oil Extractor' | 'Packager' | 'Particle Accelerator' | 'Refinery' | 'Smelter'
+    isAlternate?: boolean
 }
 
 interface RecipeItem {

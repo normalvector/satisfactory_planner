@@ -10,6 +10,15 @@ At present this is a quick and nasty test application, and only has the recipe d
 
 When you first start the application you'll have a description of a simple starter iron factory which is intended to demonstrate the features included at present.
 
+## Basic Use
+The intent of this is to let you describe your factory in plain language and track the production and consumption of items with a few simple techniques in order to quickly see what you have in excess, or where you need to focus production.
+
+The top of the page has three tabs:
+
+* *Edit* is where you edit the notes
+* *Review* displays a nicely rendered version of the notes, including all of the inventory levels being tracked
+* *Recipes* allows you to view (and edit) the recipes available. Currently there aren't many recipes, only a few basic iron ones, but eventually the plan is that if you're using mods you can add their recipes here to make them available in your notes.
+
 ## Notebook Syntax
 The notebook is using [Markdown](https://www.markdownguide.org/basic-syntax/) with a few extensions added to it. All Markdown features are available from typography such as headers to links and so forth.
 
@@ -162,6 +171,9 @@ InventorySummary
 * Import/Export settings to JSON file for local store
 * Deploy build onto Github pages
 * Inline calculator
+* Record the type of machine used for recipes
+* Track power usage
+* Check recipes don't refer to unknown ingredients
 
 ## Stuff
 
