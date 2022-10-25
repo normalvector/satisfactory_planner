@@ -5,7 +5,7 @@ import Recipe from './recipe'
 const StandardRecipeJson: RecipeJson[] = [
     {
         name: 'Adaptive Control Unit',
-        produces: {
+        products: {
             'Adaptive Control Unit': 2
         },
         ingredients: {
@@ -27,7 +27,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Alclad Aluminium Sheet',
-        produces: {
+        products: {
             'Alclad Aluminium Sheet': 3
         },
         ingredients: {
@@ -45,7 +45,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Hog Protein',
-        produces: {
+        products: {
             'Alien Protein': 1
         },
         ingredients: {
@@ -61,7 +61,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Splitter Protein',
-        produces: {
+        products: {
             'Alien Protein': 1
         },
         ingredients: {
@@ -77,7 +77,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Hatcher Protein',
-        produces: {
+        products: {
             'Alien Protein': 1
         },
         ingredients: {
@@ -93,7 +93,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Stinger Protein',
-        produces: {
+        products: {
             'Alien Protein': 1
         },
         ingredients: {
@@ -104,7 +104,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Aluminium Casing',
-        produces: {
+        products: {
             'Aluminium Casing': 2
         },
         ingredients: {
@@ -115,7 +115,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Alcad Casing',
-        produces: {
+        products: {
             'Aluminium Casing': 15
         },
         ingredients: {
@@ -128,7 +128,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Aluminium Ingot',
-        produces: {
+        products: {
             'Aluminium Ingot': 4
         },
         ingredients: {
@@ -140,7 +140,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Pure Aluminium Ingot',
-        produces: {
+        products: {
             'Aluminium Ingot': 1
         },
         ingredients: {
@@ -152,7 +152,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Aluminium Scrap',
-        produces: {
+        products: {
             'Aluminium Scrap': 6,
             'Water': 2
         },
@@ -166,7 +166,7 @@ const StandardRecipeJson: RecipeJson[] = [
     {
         // TODO: Is this the right name to use?
         name: 'Electrode Aluminium Scrap',
-        produces: {
+        products: {
             'Aluminium Scrap': 20,
             'Water': 7
         },
@@ -180,7 +180,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Instant Scrap',
-        produces: {
+        products: {
             'Aluminium Scrap': 30,
             'Water': 5
         },
@@ -214,7 +214,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Automated Speed Wiring',
-        produces: {
+        products: {
             'Automated Wiring': 4
         },
         ingredients: {
@@ -228,7 +228,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Battery',
-        produces: {
+        products: {
             'Battery': 1,
             'Water': 1.5
         },
@@ -242,7 +242,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Classic Battery',
-        produces: {
+        products: {
             'Battery': 4
         },
         ingredients: {
@@ -273,7 +273,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Crystal Beacon',
-        produces: {
+        products: {
             'Beacon': 20
         },
         ingredients: {
@@ -287,7 +287,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Biomass (Leaves)',
-        produces: {
+        products: {
             'Biomass': 5
         },
         ingredients: {
@@ -298,7 +298,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Biomass (Wood)',
-        produces: {
+        products: {
             'Biomass': 20
         },
         ingredients: {
@@ -309,7 +309,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Biomass (Mycelia)',
-        produces: {
+        products: {
             'Biomass': 10,
         },
         ingredients: {
@@ -320,7 +320,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Biomass (Alien Protein)',
-        produces: {
+        products: {
             'Biomass': 100
         },
         ingredients: {
@@ -331,7 +331,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Black Powder',
-        produces: {
+        products: {
             'Black Powder': 2
         },
         ingredients: {
@@ -343,7 +343,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Fine Black Powder',
-        produces: {
+        products: {
             'Black Powder': 4
         },
         ingredients: {
@@ -364,7 +364,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Coated Cable',
-        produces: {
+        products: {
             'Cable': 9
         },
         ingredients: {
@@ -377,7 +377,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Insulated Cable',
-        produces: {
+        products: {
             'Cable': 20
         },
         ingredients: {
@@ -390,7 +390,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Quickwire Cable',
-        produces: {
+        products: {
             'Cable': 11
         },
         ingredients: {
@@ -411,7 +411,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Pure Caterium Ingot',
-        produces: {
+        products: {
             'Caterium Ingot': 1
         },
         ingredients: {
@@ -438,7 +438,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Electrode Circuit Board',
-        produces: {
+        products: {
             'Circuit Board': 1
         },
         ingredients: {
@@ -451,7 +451,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Silicon Circuit Board',
-        produces: {
+        products: {
             'Circuit Board': 5
         },
         ingredients: {
@@ -464,7 +464,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Caterium Circuit Board',
-        produces: {
+        products: {
             'Circuit Board': 7
         },
         ingredients: {
@@ -482,7 +482,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Color Cartridge',
-        produces: {
+        products: {
             'Color Cartridge': 10
         },
         ingredients: {
@@ -493,7 +493,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Compacted Coal',
-        produces: {
+        products: {
             'Compacted Coal': 5
         },
         ingredients: {
@@ -516,7 +516,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Crystal Computer',
-        produces: {
+        products: {
             'Computer': 3
         },
         ingredients: {
@@ -529,7 +529,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Caterium Computer',
-        produces: {
+        products: {
             'Computer': 1,
         },
         ingredients: {
@@ -551,7 +551,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Rubber Concrete',
-        produces: {
+        products: {
             'Concrete': 9
         },
         ingredients: {
@@ -564,7 +564,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Wet Concrete',
-        produces: {
+        products: {
             'Concrete': 4
         },
         ingredients: {
@@ -577,7 +577,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Fine Concrete',
-        produces: {
+        products: {
             'Concrete': 10
         },
         ingredients: {
@@ -601,7 +601,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Cooling Device',
-        produces: {
+        products: {
             'Cooling System': 2
         },
         ingredients: {
@@ -623,7 +623,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Copper Alloy Ingot',
-        produces: {
+        products: {
             'Copper Ingot': 20
         },
         ingredients: {
@@ -636,7 +636,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Pure Copper Ingot',
-        produces: {
+        products: {
             'Copper Ingot': 15
         },
         ingredients: {
@@ -654,7 +654,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Copper Powder',
-        produces: {
+        products: {
             'Copper Powder': 5
         },
         ingredients: {
@@ -673,7 +673,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Steamed Copper Sheet',
-        produces: {
+        products: {
             'Copper Sheet': 3,
         },
         ingredients: {
@@ -700,7 +700,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Insulate Crystal Oscillator',
-        produces: {
+        products: {
             'Crystal Oscillator': 1
         },
         ingredients: {
@@ -714,7 +714,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Electromagnetic Control Rod',
-        produces: {
+        products: {
             'Electromagnetic Control Rod': 2
         },
         ingredients: {
@@ -726,7 +726,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Electromagnetic Control Rod Alternate',
-        produces: {
+        products: {
             'Electromagnetic Control Rod': 2
         },
         ingredients: {
@@ -739,7 +739,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Empty Canister',
-        produces: {
+        products: {
             'Empty Canister': 4
         },
         ingredients: {
@@ -750,7 +750,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Steel Canister',
-        produces: {
+        products: {
             'Empty Canister': 2
         },
         ingredients: {
@@ -762,7 +762,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Coated Iron Canister',
-        produces: {
+        products: {
             'Empty Canister': 4
         },
         ingredients: {
@@ -775,7 +775,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Packaged Alumina Solution',
-        produces: {
+        products: {
             'Packaged Alumina Solution': 2
         },
         ingredients: {
@@ -787,7 +787,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Alumina Solution',
-        produces: {
+        products: {
             'Alumina Solution': 2,
             'Empty Canister': 2
         },
@@ -799,7 +799,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Packaged Oil',
-        produces: {
+        products: {
             'Packaged Oil': 2
         },
         ingredients: {
@@ -811,7 +811,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Oil',
-        produces: {
+        products: {
             'Crude Oil': 2,
             'Empty Canister': 2
         },
@@ -823,7 +823,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Package Fuel',
-        produces: {
+        products: {
             'Packaged Fuel': 2
         },
         ingredients: {
@@ -835,7 +835,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Fuel',
-        produces: {
+        products: {
             'Fuel': 2,
             'Empty Canister': 2
         },
@@ -847,7 +847,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Package Heavy Oil Residue',
-        produces: {
+        products: {
             'Packaged Heavy Oil Residue': 2
         },
         ingredients: {
@@ -859,7 +859,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Heavy Oil Residue',
-        produces: {
+        products: {
             'Heavy Oil Residue': 2,
             'Empty Canister': 2
         },
@@ -871,7 +871,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Package Liquid Biofuel',
-        produces: {
+        products: {
             'Packaged Liquid Biofuel': 2
         },
         ingredients: {
@@ -883,7 +883,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Liquid Biofuel',
-        produces: {
+        products: {
             'Liquid Biofuel': 2,
             'Empty Canister': 2
         },
@@ -895,7 +895,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Packaged Sulfuric Acid',
-        produces: {
+        products: {
             'Packaged Sulfuric Acid': 2
         },
         ingredients: {
@@ -907,7 +907,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Sulfuric Acid',
-        produces: {
+        products: {
             'Sulfuric Acid': 1,
             'Empty Canister': 1
         },
@@ -919,7 +919,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Package Turbofuel',
-        produces: {
+        products: {
             'Packaged Turbofuel': 2
         },
         ingredients: {
@@ -931,7 +931,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Turbofuel',
-        produces: {
+        products: {
             'Turbofuel': 2,
             'Empty Canister': 2
         },
@@ -943,7 +943,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Package Water',
-        produces: {
+        products: {
             'Packaged Water': 2
         },
         ingredients: {
@@ -955,7 +955,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Water',
-        produces: {
+        products: {
             'Water': 2,
             'Empty Canister': 2
         },
@@ -984,7 +984,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Nitric Acid',
-        produces: {
+        products: {
             'Nitric Acid': 1,
             'Empty Fluid Tank': 1
         },
@@ -1005,7 +1005,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Unpackage Nitrogen Gas',
-        produces: {
+        products: {
             'Nitrogen Gas': 4,
             'Empty Fluid Tank': 1
         },
@@ -1026,7 +1026,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Encased Industril Pipe',
-        produces: {
+        products: {
             'Encased Industrial Beam': 1
         },
         ingredients: {
@@ -1048,7 +1048,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Instant Plutonium Cell',
-        produces: {
+        products: {
             'Encased Plutonim Cell': 20
         },
         ingredients: {
@@ -1060,7 +1060,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Encased Uranium Cell',
-        produces: {
+        products: {
             'Encased Uranium Cell': 5,
             'Sulfuric Acid': 2
         },
@@ -1074,7 +1074,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Infused Uranium Cell',
-        produces: {
+        products: {
             'Encased Uranium Cell': 4
         },
         ingredients: {
@@ -1098,7 +1098,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Polyester Fabric',
-        produces: {
+        products: {
             'Fabric': 1
         },
         ingredients: {
@@ -1125,7 +1125,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Heat-Fused Frame',
-        produces: {
+        products: {
             'Fused Modular Frame': 1
         },
         ingredients: {
@@ -1168,7 +1168,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Heat Exchanger',
-        produces: {
+        products: {
             'Heat Sink': 1
         },
         ingredients: {
@@ -1192,7 +1192,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Heavy Flexible Frame',
-        produces: {
+        products: {
             'Heavy Modular Frame': 1
         },
         ingredients: {
@@ -1207,7 +1207,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Heavy Encased Frame',
-        produces: {
+        products: {
             'Heavy Modular Frame': 3
         },
         ingredients: {
@@ -1232,7 +1232,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Silicon High-Speed Connector',
-        produces: {
+        products: {
             'High-Speed Connector': 2
         },
         ingredients: {
@@ -1254,7 +1254,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Pure Iron Ingot',
-        produces: {
+        products: {
             'Iron Ingot': 13
         },
         ingredients: {
@@ -1267,7 +1267,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Iron Alloy Ingot',
-        produces: {
+        products: {
             'Iron Ingot': 5
         },
         ingredients: {
@@ -1285,7 +1285,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Iron Plate',
-        produces: {
+        products: {
             'Iron Plate': 2
         },
         ingredients: {
@@ -1296,7 +1296,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Coated Iron Plate',
-        produces: {
+        products: {
             'Iron Plate': 15
         },
         ingredients: {
@@ -1309,7 +1309,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Steel Coated Plate',
-        produces: {
+        products: {
             'Iron Plate': 18
         },
         ingredients: {
@@ -1330,7 +1330,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Steel Rod',
-        produces: {
+        products: {
             'Iron Rod': 4
         },
         ingredients: {
@@ -1352,7 +1352,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Magnetic Field Generator',
-        produces: {
+        products: {
             'Magnetic Field Generator': 2
         },
         ingredients: {
@@ -1375,7 +1375,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Modular Frame',
-        produces: {
+        products: {
             'Modular Frame': 2
         },
         ingredients: {
@@ -1387,7 +1387,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Bolted Frame',
-        produces: {
+        products: {
             'Modular Frame': 2
         },
         ingredients: {
@@ -1400,7 +1400,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Steeled Frame',
-        produces: {
+        products: {
             'Modular Frame': 3
         },
         ingredients: {
@@ -1422,7 +1422,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Rigour Motor',
-        produces: {
+        products: {
             'Motor': 6
         },
         ingredients: {
@@ -1436,7 +1436,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Electric Motor',
-        produces: {
+        products: {
             'Motor': 2
         },
         ingredients: {
@@ -1512,7 +1512,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Non-fissile Uranium',
-        produces: {
+        products: {
             'Non-fissile Uranium': 20,
             'Water': 6
         },
@@ -1527,7 +1527,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Fertile Uranium',
-        produces: {
+        products: {
             'Non-fissule Uranium': 20,
             'Water': 80
         },
@@ -1560,7 +1560,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Petroleum Coke',
-        produces: {
+        products: {
             'Petroleum Coke': 12
         },
         ingredients: {
@@ -1571,7 +1571,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Plastic',
-        produces: {
+        products: {
             'Plastic': 2,
             'Heavy Oil Residue': 1
         },
@@ -1583,7 +1583,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Residual Plastic',
-        produces: {
+        products: {
             'Plastic': 2
         },
         ingredients: {
@@ -1595,7 +1595,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Recycled Plastic',
-        produces: {
+        products: {
             'Plastic': 12
         },
         ingredients: {
@@ -1619,7 +1619,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Plutonium Fuel Unit',
-        produces: {
+        products: {
             'Plutonium Fuel Rod': 1
         },
         ingredients: {
@@ -1632,7 +1632,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Plutonium Pallet',
-        produces: {
+        products: {
             'Plutonium Pallet': 30
         },
         ingredients: {
@@ -1644,7 +1644,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Plutonium Waste',
-        produces: {
+        products: {
             'Plutonium Waste': 10
         },
         ingredients: {
@@ -1656,7 +1656,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Fuel',
-        produces: {
+        products: {
             'Fuel': 4,
             'Polymer Resin': 3
         },
@@ -1668,7 +1668,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Heavy Oil Residue',
-        produces: {
+        products: {
             'Heavy Oil Residue': 4,
             'Polymer Resin': 2
         },
@@ -1681,7 +1681,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Polymer Resin',
-        produces: {
+        products: {
             'Polymer Resin': 13,
             'Heavy Oil Residue': 2
         },
@@ -1694,7 +1694,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Power Shard (1)',
-        produces: {
+        products: {
             'Power Shard': 1
         },
         ingredients: {
@@ -1710,7 +1710,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Power Shard (2)',
-        produces: {
+        products: {
             'Power Shard': 2
         },
         ingredients: {
@@ -1726,7 +1726,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Power Shard (3)',
-        produces: {
+        products: {
             'Power Shard': 5
         },
         ingredients: {
@@ -1751,7 +1751,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Quartz Crystel',
-        produces: {
+        products: {
             'Quartz Crystal': 3
         },
         ingredients: {
@@ -1762,7 +1762,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Pure Quartz Crystal',
-        produces: {
+        products: {
             'Quartz Crystal': 7
         },
         ingredients: {
@@ -1775,7 +1775,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Quickwire',
-        produces: {
+        products: {
             'Quickwire': 5
         },
         ingredients: {
@@ -1786,7 +1786,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Fused Quickwire',
-        produces: {
+        products: {
             'Quickwire': 12
         },
         ingredients: {
@@ -1798,7 +1798,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Radio Control Unit',
-        produces: {
+        products: {
             'Radio Control Unit': 2
         },
         ingredients: {
@@ -1811,7 +1811,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Radio Control System',
-        produces: {
+        products: {
             'Radio Control Unit': 3
         },
         ingredients: {
@@ -1826,7 +1826,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Radio Connection Unit',
-        produces: {
+        products: {
             'Radio Control Unit': 1
         },
         ingredients: {
@@ -1890,7 +1890,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Advanced Iron Plate',
-        produces: {
+        products: {
             'Reinforced Iron Plate': 1
         },
         ingredients: {
@@ -1903,7 +1903,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Bolted Iron Plate',
-        produces: {
+        products: {
             'Reinforced Iron Plate': 3
         },
         ingredients: {
@@ -1916,7 +1916,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Stitched Iron Plate',
-        produces: {
+        products: {
             'Reinforced Iton Plate': 3
         },
         ingredients: {
@@ -1929,7 +1929,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Hunting Rifle Ammo',
-        produces: {
+        products: {
             'Hunting Rifle Ammo': 10
         },
         ingredients: {
@@ -1941,7 +1941,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Rifle Ammo',
-        produces: {
+        products: {
             'Rifle Ammo': 15
         },
         ingredients: {
@@ -1954,7 +1954,7 @@ const StandardRecipeJson: RecipeJson[] = [
     // TODO: Two recipes with the same base name
     {
         name: 'Turbo Rifle Ammo (Manufacturer)',
-        produces: {
+        products: {
             'Turbo Rifle Ammo': 50
         },
         ingredients: {
@@ -1967,7 +1967,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Turbo Rifle Ammo (Blender)',
-        produces: {
+        products: {
             'Turbo Rifle Ammo': 50
         },
         ingredients: {
@@ -1989,7 +1989,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Copper Rotor',
-        produces: {
+        products: {
             'Rotor': 3
         },
         ingredients: {
@@ -2002,7 +2002,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Steel Rotor',
-        produces: {
+        products: {
             'Rotor': 1
         },
         ingredients: {
@@ -2015,7 +2015,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Rubber',
-        produces: {
+        products: {
             'Rubber': 2,
             'Heavy Oil Residue': 2
         },
@@ -2027,7 +2027,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Residual Rubber',
-        produces: {
+        products: {
             'Rubber': 2
         },
         ingredients: {
@@ -2039,7 +2039,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Recycled Rubber',
-        produces: {
+        products: {
             'Rubber': 12
         },
         ingredients: {
@@ -2057,7 +2057,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Screw',
-        produces: {
+        products: {
             'Screw': 4
         },
         ingredients: {
@@ -2068,7 +2068,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Cast Screw',
-        produces: {
+        products: {
             'Screw': 20
         },
         ingredients: {
@@ -2080,7 +2080,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Steel Screw',
-        produces: {
+        products: {
             'Screw': 52
         },
         ingredients: {
@@ -2092,7 +2092,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Alumina Solution',
-        produces: {
+        products: {
             'Alumina Solution': 12,
             'Silica': 5
         },
@@ -2105,7 +2105,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Silica',
-        produces: {
+        products: {
             'Silica': 5
         },
         ingredients: {
@@ -2116,7 +2116,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Cheap Silica',
-        produces: {
+        products: {
             'Silica': 7
         },
         ingredients: {
@@ -2138,7 +2138,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Plastic Smart Plating',
-        produces: {
+        products: {
             'Smart Plating': 2
         },
         ingredients: {
@@ -2152,7 +2152,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Smokeless Powder',
-        produces: {
+        products: {
             'Smokeless Powder': 2
         },
         ingredients: {
@@ -2164,7 +2164,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Solid Biofuel',
-        produces: {
+        products: {
             'Solid Biofuel': 4
         },
         ingredients: {
@@ -2184,7 +2184,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Quickwire Stator',
-        produces: {
+        products: {
             'Stator': 2
         },
         ingredients: {
@@ -2204,7 +2204,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Steel Ingot',
-        produces: {
+        products: {
             'Steel Ingot': 3
         },
         ingredients: {
@@ -2216,7 +2216,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Coke Steel Ingot',
-        produces: {
+        products: {
             'Steel Ingot': 20
         },
         ingredients: {
@@ -2229,7 +2229,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Compacted Steel Ingot',
-        produces: {
+        products: {
             'Steel Ingot': 10
         },
         ingredients: {
@@ -2242,7 +2242,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Solid Steel Ingot',
-        produces: {
+        products: {
             'Steel Ingot': 3
         },
         ingredients: {
@@ -2255,7 +2255,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Steel Pipe',
-        produces: {
+        products: {
             'Steel Pipe': 2
         },
         ingredients: {
@@ -2282,7 +2282,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'OC Supercomputer',
-        produces: {
+        products: {
             'Supercomputer': 1
         },
         ingredients: {
@@ -2295,7 +2295,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Super-State Computer',
-        produces: {
+        products: {
             'Supercomputer': 2
         },
         ingredients: {
@@ -2310,7 +2310,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Thermal Propulsion Rocket',
-        produces: {
+        products: {
             'Thermal Production Rocket': 2
         },
         ingredients: {
@@ -2335,7 +2335,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Turbo Electric Motor',
-        produces: {
+        products: {
             'Turbo Motor': 3
         },
         ingredients: {
@@ -2350,7 +2350,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Turbo Pressure Motor',
-        produces: {
+        products: {
             'Turbo Motor': 2
         },
         ingredients: {
@@ -2365,7 +2365,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Turbofuel',
-        produces: {
+        products: {
             'Turbofuel': 5
         },
         ingredients: {
@@ -2377,7 +2377,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Turbo Heavy Fuel',
-        produces: {
+        products: {
             'Turbofuel': 4
         },
         ingredients: {
@@ -2390,7 +2390,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Turbo Blend Fuel',
-        produces: {
+        products: {
             'Turbofuel': 6
         },
         ingredients: {
@@ -2420,7 +2420,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Uranium Fuel Unit',
-        produces: {
+        products: {
             'Uranium Fuel Rod': 3
         },
         ingredients: {
@@ -2435,7 +2435,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Uranium Waste',
-        produces: {
+        products: {
             'Uranium Waste': 50
         },
         ingredients: {
@@ -2447,7 +2447,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Versatile Framework',
-        produces: {
+        products: {
             'Versatile Framework': 2
         },
         ingredients: {
@@ -2459,7 +2459,7 @@ const StandardRecipeJson: RecipeJson[] = [
     },
     {
         name: 'Flexible Framework',
-        produces: {
+        products: {
             'Versatile Framework': 2
         },
         ingredients: {

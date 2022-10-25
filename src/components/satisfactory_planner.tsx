@@ -25,8 +25,8 @@ function SatisfactoryPlanner(): React.ReactElement {
     //const [recipeJson, setRecipeJson] = React.useState<string>(JSON.stringify(StandardRecipeJson, null, 2))
     const [recipeJson, setRecipeJson] = useLocalStorage('recipeJson', JSON.stringify(StandardRecipeJson, null, 2))
 
-    //const [recipes, setRecipes] = React.useState<Recipe[]|undefined>(undefined)
-    const [recipes, setRecipes] = useLocalStorage('recipes', Recipe.fromJson(StandardRecipeJson))
+    const [recipes, setRecipes] = React.useState<Recipe[]>([])
+    //const [recipes, setRecipes] = useLocalStorage('recipes', Recipe.fromJson(StandardRecipeJson))
 
     // Set Recipes when we load
     React.useEffect(() => {
@@ -44,12 +44,9 @@ function SatisfactoryPlanner(): React.ReactElement {
         recipeJson ||= ''
 
         setRecipeJson(recipeJson)
-        //console.log("New recipes: ", recipeJson)
 
         try {
-            const recipeData = JSON.parse(recipeJson)
-            //console.log("RD: ", recipeData)
-            const recipes = Recipe.fromJson(recipeData)
+            const recipes = Recipe.fromJson(recipeJson)
             RecipeValidationReport.validateRecipesToConsole(recipes)
 
             setRecipes(recipes)
@@ -63,6 +60,8 @@ function SatisfactoryPlanner(): React.ReactElement {
     const onRecipeReset = () => {
         onRecipeChange(JSON.stringify(StandardRecipeJson))
     }
+
+    window.recipes = recipes;
 
     return (
         <div>

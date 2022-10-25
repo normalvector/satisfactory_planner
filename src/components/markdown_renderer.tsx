@@ -19,14 +19,14 @@ const mainInventory: Inventory = new Inventory()
 var localInventory: Inventory = new Inventory()
 
 const SatisfactoryTrackerName = 'SatisfactoryTracker'
-const SatisfactoryTracker = {
+const SatisfactoryTracker: marked.MarkedExtension = {
     name: SatisfactoryTrackerName,
     level: 'block',
     start(src: any) {
         //console.log("\n\nSTART SRC: ", typeof (src), src)
         return src.match(/^(\s*)([+-])\s*(\d.?\d*)\s*(.*)/)?.index
     },
-    tokenizer(src: any, tokens: any) {
+    tokenizer(src: string, tokens: marked.Token[]) {
         const rule = /^(\s*)([+-])\s*(\d.?\d*)\s*([^!\n\r]*)(?:!([\w\s]*))?/
         //const rule = /^(\s+)([+-])\s*(.*?)/
         const match = rule.exec(src)
@@ -67,7 +67,8 @@ const SatisfactoryTracker = {
         }
 
         // Find the recipe
-        //console.log("GLOBAL RECIPES: ", globalRecipes)
+        console.log("GLOBAL RECIPES: ", globalRecipes)
+
         const recipe: Recipe | undefined = globalRecipes.find((recipe) => recipe.name === name)
         //console.log("Applying recipe ", recipe)
         if (!recipe) {

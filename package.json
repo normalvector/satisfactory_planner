@@ -9,7 +9,10 @@
     "build:watch": "npm run copy_static && node build.js --watch",
     "copy_static": "syncdir static build --deleteOrphaned",
     "copy_to_docs": "syncdir build docs --deleteOrphaned",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npm run ts:typecheck && npm run lint:eslint",
+    "lint:eslint": "eslint src --fix --ext .js,.jsx,.ts,.tsx",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts:typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",

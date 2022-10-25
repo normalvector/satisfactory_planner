@@ -1,4 +1,4 @@
-import Recipe from "./Recipe"
+import Recipe from "./recipe"
 
 class Inventory {
     // This is the main store- {'Iron Ingot': 23, 'Iron Ore': 500}
@@ -56,7 +56,7 @@ class Inventory {
         }
 
         // Add all of the produced items
-        for (const product of recipe.ingredients) {
+        for (const product of recipe.products) {
             const countPerMinute = product.count * count * recipesPerMinute
             this.addItem(product.name, countPerMinute)
         }
@@ -68,7 +68,7 @@ class Inventory {
             return `${totalCount}x ${name}`
             //return `${totalCount}x ${name} with ${remaining} remaining`
         }).join(', ')
-        var productMsg = recipe.ingredients.map((product) => {
+        var productMsg = recipe.products.map((product) => {
             const totalCount = product.count * count * recipesPerMinute
             const name = product.name
             const remaining: number = this.getCount(name)

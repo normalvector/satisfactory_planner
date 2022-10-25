@@ -1,14 +1,12 @@
-
-
 // These can be a single item name, or an array containing a combination of item names
 // and name/count hashes
 type RecipeJsonList = string | { [name: string]: number }
 export interface RecipeJson {
     name: string;
     time: number;
-    produces?: RecipeJsonList;
+    products?: RecipeJsonList;
     ingredients?: RecipeJsonList;
-    machine: 'Assembler' | 'Blender' | 'Constructor' | 'Foundry' | 'Manual' | 'Manufacturer' | 'Miner' | 'Nuclear Power Plant' | 'Oil Extractor' | 'Packager' | 'Particle Accelerator' | 'Refinery' | 'Smelter'
+    machine: string, // Not limiting this in order to allow new machines to be declared
     isAlternate?: boolean
 }
 
@@ -18,64 +16,82 @@ interface RecipeItem {
 }
 class Recipe {
     _name: string;
-    _time: number;
-    _produces: RecipeItem[];
+    _products: RecipeItem[];
     _ingredients: RecipeItem[];
-
+    _time: number;
+    _machine: string; // Not limiting this in order to allow new machines to be declared
+    _isAlternate: boolean;
 
     constructor(
         name: string,
+        products: RecipeItem[],
+        ingredients: RecipeItem[],
         time: number,
-        produces: RecipeItem[],
-        ingredients: RecipeItem[]
+        machine: string,
+        isAlternate: boolean
     ) {
         // Copy variables to private vars
         this._name = name
-        this._time = time
-        this._produces = produces
+        this._products = products
         this._ingredients = ingredients
+        this._time = time
+        this._machine = machine
+        this._isAlternate = isAlternate
     }
 
     toString() {
-        const producesStr: string = this._produces.map((item) => `${item.count}x ${item.name}`).join(',')
+        const productStr: string = this._products.map((item) => `${item.count}x ${item.name}`).join(',')
         const ingredientsStr: string = this._ingredients.map((item) => `${item.count}x ${item.name}`).join(',')
 
+        const nameStr = `${this.name}${this._isAlternate ? ' (ALTERNATE)' : ''}`
+        const prodStr = `on ${this._machine} in ${this._time}s`
         if (!ingredientsStr) {
-            return `${this._name}: Produces ${producesStr} in ${this.time}s`
+            return `${nameStr}: Products ${productStr} in ${prodStr}`
         }
-        return `${this._name}: Produces ${producesStr} from ${ingredientsStr} in ${this.time}s`
+        return `${nameStr}: Produces ${productStr} from ${ingredientsStr} in ${prodStr}`
     }
 
     get name() {
         return this._name;
     }
 
-    get time() {
-        return this._time;
-    }
-
     get products() {
-        return this._produces
+        return this._products
     }
 
     get ingredients() {
         return this._ingredients
     }
 
-    static fromJson(json: RecipeJson[]): Recipe[] {
+    get time() {
+        return this._time;
+    }
+
+    get machine() {
+        return this._machine
+    }
+
+    get isAlternate() {
+        return this._isAlternate
+    }
+
+    static fromJson(jsonStr: string): Recipe[] {
+        const json: RecipeJson[] = JSON.parse(jsonStr)
         return json.map((jsonItem) => {
             const name = jsonItem.name
             const time = jsonItem.time
+            const machine = jsonItem.machine
+            const isAlternate: boolean = jsonItem.isAlternate || false
 
-            // If we don't have a 'produces' entry we default to producing 1x 'name'
-            const produces: RecipeItem[] = this.jsonListToRecipeList(jsonItem.produces) || [{ name: name, count: 1 }]
+            // If we don't have a 'products' entry we default to producing 1x 'name'
+            const products: RecipeItem[] = this.jsonListToRecipeList(jsonItem.products) || [{ name: name, count: 1 }]
 
             // If we don't have any ingredients we default to not needing any- this is suitable for
             // miners
             const ingredients: RecipeItem[] = this.jsonListToRecipeList(jsonItem.ingredients) || []
 
-            const recipe = new Recipe(name, time, produces, ingredients)
-            // console.log("Produced recipe ", recipe.toString(), recipe, " from JSON ", JSON.stringify(json, null, 2))
+            // Build the actual recipe now
+            const recipe = new Recipe(name, products, ingredients, time, machine, isAlternate)
 
             return recipe
         })
